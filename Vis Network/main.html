@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+  <title>Network | Basic usage</title>
+
+    <script type="text/javascript" src="vis-network.min.js"></script>
+    <link href="vis-network.min.css" rel="stylesheet" type="text/css" />
+
+  <style type="text/css">
+           
+      h4 {
+          text-align: center;
+          color: #333300;
+          font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+      }
+      .home {
+          text-decoration: none;
+      }
+      #mybutton {
+          position:relative;
+          left:490px;
+      }
+      #mynetwork {
+          width: 600px;
+          height: 400px;
+          border: 1px solid lightgray;
+          position: relative;
+          margin-left: auto;
+          margin-right: auto;
+      }
+      pre {
+          position: relative;
+          margin-left: auto;
+          margin-right: auto;
+          text-align:center;
+      }
+      p {
+          text-align: center;
+          font-size: 24px;
+          font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+      }
+  </style>
+</head>
+<body>    
+    <p><strong>Vis Network (work in progress)</strong></p>
+    <pre id="eventSpan"></pre>
+    <div id="mynetwork" style="background-color:white"></div>
+    <div id="mybutton"><button onclick="createGroup()">Add Group</button></div>
+    <script type="text/javascript">
+        document.getElementById('eventSpan').innerHTML = '<h2>Node Info: </h2><h4>N/A</h4>';
+        var currentIndex = 2; //track id's as number of groups gets larger(need unique id's)
+        var nodes = new vis.DataSet(); //initialize empty sets to add too
+        var edges = new vis.DataSet();
+        nodes.add({id:1,value:10,title:"core",color:{background:'pink',border:'red'}})
+        function createGroup() {
+            var x = 1;
+            edges.add({ from: 1, to: currentIndex,length:'300' });
+            for (var i = currentIndex; i < 34 + currentIndex; i++) {
+                if (i === currentIndex) {
+                    
+                    nodes.add({ id: i, value: 5, title: "PE", color: { background: 'lime', border: 'green' } });
+                }
+                else {
+                    nodes.add({ id: i, value: 1, title: "CE" })
+                }
+            }
+            for (var i = currentIndex+1; i < 34 + currentIndex; i++) {
+                edges.add({ from: currentIndex, to: i })
+                x++;
+            }
+            currentIndex = currentIndex + x;
+        }
+        //createGroup(); //change later so that this is called on interaction
+        var container = document.getElementById('mynetwork'); 
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        var options = {
+            nodes: {
+                shape: 'dot'
+            },
+            edges: {
+                smooth: {
+                    type: 'continuous'
+                }
+            }
+        };
+        var network = new vis.Network(container, data, options);
+        network.on("click", function (params) {              
+            if(typeof JSON.stringify(params["nodes"][0]) !== 'undefined') {
+                document.getElementById('eventSpan').innerHTML = '<h2>Node Info: </h2>' + JSON.stringify(params["nodes"][0], null).bold().fontsize(5);
+            }
+            else {
+                document.getElementById('eventSpan').innerHTML = '<h2>Node Info: </h2><h4>N/A</h4>';
+            }
+        })
+    </script>     
+</body>
+</html>
