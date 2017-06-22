@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <title>Network | Basic usage</title>
+    <script type="text/javascript" src="vis-network.min.js"></script>
+    <link href="styles/vis-network.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="styles/mycss.css"> 
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>  
+    <div id="mySidenav" class="sidenav">
+        <table>
+            <tbody>
+                <tr>
+                    <div class="container" id="inputDialogue">                                         
+                        <span class="label label-info" id="label">Nodes</span><input type="number" class="form-control" name="nodeCount" value="1" min="1" max="100" id="nodeCount">
+                        <input type="button" name="addGroup" id="addgroup" value="Add Group" class="btn btn-success custom" onclick="addGroup()"><br>
+                        <input type="button" name="edit" value="Edit" class="btn btn-info visible custom" onclick="editInterface()">
+                        <input type="button" name="deleteGroup" value="Delete" class="btn btn-warning custom" onclick="deleteGroup()">
+                        <input type="button" name="clear" value="Clear All" class = "btn btn-danger custom" onclick="clearAll()"><br><br>                        
+                        <div class="hidden" id="editinterface">               
+                        <form class="form-group" id="editForm">
+                            <label for="title">Title:</label>
+                            <input type="text" id="title" name="title" placeholder="Enter a title..." class="form-control editcustom">
+                            <label for="info" id="editLabel">Info:</label>
+                            <textarea name="info" id="info" rows="3" placeholder="Enter information..." class="form-control editcustom"></textarea>
+                            <input type="button" name="cancel" value="Cancel" class="btn btn-danger custom" onclick="cancelEdit()">
+                            <input type="button" name="change" value="Change" class="btn btn-info custom" onclick="changeValues()">
+                        </form>
+                        </div>
+                        <div id="instructions">
+                            <h2>Instructions</h2>
+                            <ul id="instructions-list">
+                                <li>Add Group will add specified number of nodes to the network, on the node you have selected.</li>
+                                <li>Delete will delete all child nodes of selected node.</li>
+                                <li>Clear all does exactly what it says.</li>
+                                <li>Double click is shortcut for adding groups.</li>
+                            </ul>    
+                        </div>                                       
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+        <div onclick="closeNav()" id="closeBtn" onmouseover="" style="cursor:pointer;">
+            <img src="images/close.ico" alt="n/a">
+        </div>
+    </div>
+    <span onclick="openNav()" id="openBtn" onmouseover="" style="cursor:pointer;" ><img src="images/open.png" alt="n/a"></span> 
+    <div id="mynetwork" style="background-color:white"></div>    
+    
+    <script type="text/javascript" src="network.js?2"></script> 
+    <script> //just the nav window open close
+        function openNav(){
+            document.getElementById('mySidenav').style.width = '350px';
+        }
+        function closeNav(){
+            document.getElementById('mySidenav').style.width = '0px';
+        }
+        openNav();
+    </script>    
+</body>
+</html>
