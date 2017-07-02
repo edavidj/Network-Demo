@@ -5,14 +5,7 @@ var selected = { //object for tracking the currently selected node
     params: null,
     state:false,
     id:null,
-    splitID:null
-}
-var groupTrack = 0;
-function test(){
-    console.log("This is a test run function so far so good");
-    if(x>y){
-        console.log("Those aren't actually defined variables");
-    }
+    splitID:null  
 }
 class nodeControl{
     constructor(){ 
@@ -49,7 +42,6 @@ function addGroup(){
         nodes.add({id:'0',value:100,title:"core",color:{background:'rgba(255,'+green+',0,1)',border:'rgba(255,'+green+',0,1)'},mass:4})
     }
     else if(selected.state){
-        groupTrack++;
         nodeObject.nextColor;
         var amount = document.getElementById('nodeCount').value;
         for(var i = 0; i< amount;i++){
