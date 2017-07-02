@@ -5,7 +5,7 @@ var selected = { //object for tracking the currently selected node
     params: null,
     state:false,
     id:null,
-    splitID:null  
+    splitID:null
 }
 class nodeControl{
     constructor(){ 
@@ -33,32 +33,35 @@ class nodeControl{
         return 100 - factor;
     }
 } 
-var nodeObject = new nodeControl(); //can be used to track nodeObject of one thread or just to provide functions to track green rgba number
-var green = nodeObject.currentShade('').toString();
+var nodeProperties = new nodeControl(); //can be used to track nodeProperties of one thread or just to provide functions to track green rgba number
+var green = nodeProperties.currentShade('').toString();
 nodes.add({id:'0',value:100,title:"core",color:{background:'rgba(255,'+green+',0,1)',border:'rgba(255,'+green+',0,1)'},mass:4})
 function addGroup(){
     if(nodes.getIds().length === 0){
-        var green = nodeObject.currentShade('').toString();
+        var green = nodeProperties.currentShade('').toString();
         nodes.add({id:'0',value:100,title:"core",color:{background:'rgba(255,'+green+',0,1)',border:'rgba(255,'+green+',0,1)'},mass:4})
     }
     else if(selected.state){
-        nodeObject.nextColor;
-        var amount = document.getElementById('nodeCount').value;
-        for(var i = 0; i< amount;i++){
-            var green = nodeObject.currentShade(selected.id).toString();
-            nodes.add({
-                id: selected.id + ' '+currentIndex.toString(),
-                value: nodeObject.currentValue(selected.id),
-                color: {background:'rgba(255,'+green+',0,1)',border:'rgba(255,'+green+',0,1)'},
-                mass:1
-            })
-            edges.add({from:selected.id,to:selected.id+' '+currentIndex,length:160});
-            currentIndex++;
+        nodeProperties.nextColor;
+        var numberOfNodes = document.getElementById('nodeCount').value;
+        for(var i = 0; i< numberOfNodes;i++){
+            createNode(nodeProperties);
         }
     }
     else{
         alert("Please select a node before expanding.");
     }    
+}
+function createNode(nodeProperties){
+    var green = nodeProperties.currentShade(selected.id).toString();
+    nodes.add({
+        id: selected.id + ' '+currentIndex.toString(),
+        value: nodeProperties.currentValue(selected.id),
+        color: {background:'rgba(255,'+green+',0,1)',border:'rgba(255,'+green+',0,1)'},
+        mass:1
+    })
+    edges.add({from:selected.id,to:selected.id+' '+currentIndex,length:160});
+    currentIndex++;
 }
 function deleteGroup(){    
     nodes.forEach(function(child){

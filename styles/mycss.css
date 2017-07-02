@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 h2{
     padding-left:25px;
 }
@@ -92,4 +93,100 @@ ul{
 img{
     width:40%;
     height:40%;
+=======
+h2{
+    padding-left:25px;
+}
+html{
+    height:100%;
+}
+.home {
+    text-decoration: none;
+}   
+#mynetwork {
+    width: 100%;
+    height: 100%;
+    border: 1px solid lightgray;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+}   
+p {
+    text-align: center;
+    font-size: 24px;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+#instructions{
+    position:absolute;
+    bottom:40%;
+    left:1%;
+}
+.hidden{
+    display:none;
+}
+.visible{
+    display:block;
+}
+#nodeCount{
+    padding-left:5px;
+    margin-left:5px;
+    margin-bottom:15px;
+    width:75px;
+    display:inline-block;
+}
+#info{
+    margin-bottom:6px;
+}
+ul{
+    width:275px;
+    overflow: inherit;
+}
+#editLabel{
+    padding-top:5px;
+}
+#label{
+    padding:7px;
+}
+#addgroup{
+    margin-left:5px;
+}
+.sidenav{
+    height:100%;
+    width:0;
+    position:fixed;
+    z-index:3;
+    top:0;
+    left:0;
+    background-color:#efefef;
+    overflow: hidden;
+    padding-top:60px;
+    transition:0.5s;
+}
+.custom{
+    width:90px;
+}
+.sidenav table{
+    transition:0.3s;
+}
+.sidenav #closeBtn{
+    position:absolute;
+    top:41%;
+    right:2px;
+    font-size: 36px;
+    width:15%;
+}
+.sidenav img{
+    width:100%;
+}
+#openBtn{
+    z-index:2;
+    top:45%;
+    left:0;
+    display:inline-block;
+    position: absolute;
+}
+img{
+    width:40%;
+    height:40%;
+>>>>>>> f7a4d8e74f312054aa8d702b6fd2e4dc6cf2cc1b
 }
