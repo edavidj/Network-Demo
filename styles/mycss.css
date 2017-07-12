@@ -68,6 +68,9 @@ ul{
 }
 .custom{
     width:90px;
+    display:block;
+    float:left;
+    margin:2px;
 }
 .sidenav table{
     transition:0.3s;
