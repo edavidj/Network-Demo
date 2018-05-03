@@ -1,8 +1,8 @@
 # Vis-Network
-**work in progress**<br>
+**OLD PROJECT**<br>
 <h2>What's this?</h2>
 - This project was just to mess around with vis.js node module, as I needed to use it for a project at work. <br>
-- Create, connect, and edit(soon tm) nodes within the network. <br>
+- Create, connect nodes within the network. <br>
 <h2>Instructions</h2>
 - Add Group will add specified number of nodes to the network, on the node you have selected.<br>
 - Delete will delete all child nodes of selected node. <br>
